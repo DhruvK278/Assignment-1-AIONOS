@@ -4,6 +4,11 @@
 
 This agent is built for **Arjun Malhotra (VP Sales)**. It ingests emails, meeting transcripts, calendars, and voice notes, then deduplicates and tracks commitments to provide a reliable Daily Brief and a conversational Q&A interface.
 
+## 🌐 Live Demo
+
+You can interact with the deployed prototype here:
+**[https://dhruvkassignment1.streamlit.app/](https://dhruvkassignment1.streamlit.app/)**
+
 ## 🎯 Core Engineering Approach
 
 This project is built around a specific design philosophy tailored for handling ambiguous and evolving information:
