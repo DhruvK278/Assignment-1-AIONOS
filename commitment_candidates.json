@@ -1,0 +1,275 @@
+[
+  {
+    "raw_text": "I'll send it to Arjun for review by Wednesday.",
+    "source_ids": [
+      "transcript-2"
+    ],
+    "actor": "Neha",
+    "counterparty": "Arjun",
+    "action": "send Q3 campaign deck draft to Arjun for review",
+    "direction": "waiting_on_other",
+    "stated_deadline": "Wednesday",
+    "ownership_clear": true,
+    "timestamp": "2026-09-21T09:01:00"
+  },
+  {
+    "raw_text": "I'll get that to him by end of day tomorrow.",
+    "source_ids": [
+      "transcript-3"
+    ],
+    "actor": "Arjun",
+    "counterparty": "Raghav",
+    "action": "send updated vendor list to Raghav",
+    "direction": "my_action",
+    "stated_deadline": "end of day tomorrow",
+    "ownership_clear": true,
+    "timestamp": "2026-09-21T09:02:00"
+  },
+  {
+    "raw_text": "the Mumbai office renewal paperwork needs someone to sign off this week. Not sure whose desk that's on right now.",
+    "source_ids": [
+      "transcript-4"
+    ],
+    "actor": "unowned",
+    "counterparty": "All",
+    "action": "sign off Mumbai office renewal paperwork",
+    "direction": "waiting_on_other",
+    "stated_deadline": "this week",
+    "ownership_clear": false,
+    "timestamp": "2026-09-21T09:03:00"
+  },
+  {
+    "raw_text": "I think that's supposed to be Facilities, but I haven't seen anyone pick it up.",
+    "source_ids": [
+      "transcript-5"
+    ],
+    "actor": "unowned",
+    "counterparty": "All",
+    "action": "sign off Mumbai office renewal paperwork",
+    "direction": "waiting_on_other",
+    "stated_deadline": "",
+    "ownership_clear": false,
+    "timestamp": "2026-09-21T09:04:00"
+  },
+  {
+    "raw_text": "Divya, can you also pull the July expense variance report before Thursday's board prep?",
+    "source_ids": [
+      "transcript-6"
+    ],
+    "actor": "Divya",
+    "counterparty": "Arjun",
+    "action": "pull July expense variance report",
+    "direction": "waiting_on_other",
+    "stated_deadline": "before Thursday",
+    "ownership_clear": true,
+    "timestamp": "2026-09-21T09:05:00"
+  },
+  {
+    "raw_text": "Yes, I'll have it ready Wednesday evening.",
+    "source_ids": [
+      "transcript-7"
+    ],
+    "actor": "Divya",
+    "counterparty": "Arjun",
+    "action": "provide expense variance report",
+    "direction": "waiting_on_other",
+    "stated_deadline": "Wednesday evening",
+    "ownership_clear": true,
+    "timestamp": "2026-09-21T09:06:00"
+  },
+  {
+    "raw_text": "I need to reconfirm the new time with their team myself.",
+    "source_ids": [
+      "transcript-8"
+    ],
+    "actor": "Arjun",
+    "counterparty": "Meridian Logistics",
+    "action": "reconfirm new meeting time with Meridian Logistics client",
+    "direction": "my_action",
+    "stated_deadline": "",
+    "ownership_clear": true,
+    "timestamp": "2026-09-21T09:07:00"
+  },
+  {
+    "raw_text": "can you send the updated vendor list today?",
+    "source_ids": [
+      "email-vendor-1"
+    ],
+    "actor": "Arjun",
+    "counterparty": "Raghav",
+    "action": "send updated vendor list",
+    "direction": "my_action",
+    "stated_deadline": "today",
+    "ownership_clear": false,
+    "timestamp": "2026-09-21T09:50:00"
+  },
+  {
+    "raw_text": "will send first thing tomorrow morning instead.",
+    "source_ids": [
+      "email-vendor-2"
+    ],
+    "actor": "Arjun",
+    "counterparty": "Raghav",
+    "action": "send updated vendor list",
+    "direction": "my_action",
+    "stated_deadline": "tomorrow morning",
+    "ownership_clear": true,
+    "timestamp": "2026-09-21T17:40:00"
+  },
+  {
+    "raw_text": "will send by tomorrow (Wednesday) morning for sure.",
+    "source_ids": [
+      "email-vendor-4"
+    ],
+    "actor": "Arjun",
+    "counterparty": "Raghav",
+    "action": "send updated vendor list",
+    "direction": "my_action",
+    "stated_deadline": "Wednesday morning",
+    "ownership_clear": true,
+    "timestamp": "2026-09-22T18:30:00"
+  },
+  {
+    "raw_text": "still targeting Wednesday for your review.",
+    "source_ids": [
+      "email-deck-1"
+    ],
+    "actor": "Neha",
+    "counterparty": "Arjun",
+    "action": "deliver campaign deck for review",
+    "direction": "waiting_on_other",
+    "stated_deadline": "Wednesday",
+    "ownership_clear": true,
+    "timestamp": "2026-09-21T11:00:00"
+  },
+  {
+    "raw_text": "shifting the review to Thursday morning instead of Wednesday",
+    "source_ids": [
+      "email-deck-2"
+    ],
+    "actor": "Neha",
+    "counterparty": "Arjun",
+    "action": "deliver campaign deck for review",
+    "direction": "waiting_on_other",
+    "stated_deadline": "Thursday morning",
+    "ownership_clear": true,
+    "timestamp": "2026-09-22T16:15:00"
+  },
+  {
+    "raw_text": "Let's say 9:30 AM Thursday, before your board prep block.",
+    "source_ids": [
+      "email-deck-4"
+    ],
+    "actor": "Neha",
+    "counterparty": "Arjun",
+    "action": "have campaign deck ready for 9:30 AM Thursday review",
+    "direction": "waiting_on_other",
+    "stated_deadline": "9:30 AM Thursday",
+    "ownership_clear": true,
+    "timestamp": "2026-09-23T10:20:00"
+  },
+  {
+    "raw_text": "how about Wednesday 3:00 PM?",
+    "source_ids": [
+      "email-call-2"
+    ],
+    "actor": "Arjun",
+    "counterparty": "Priya",
+    "action": "propose call time Wednesday 3:00 PM",
+    "direction": "my_action",
+    "stated_deadline": "Wednesday 3:00 PM",
+    "ownership_clear": true,
+    "timestamp": "2026-09-22T15:00:00"
+  },
+  {
+    "raw_text": "Wednesday 3 PM works on our end, confirmed.",
+    "source_ids": [
+      "email-call-3"
+    ],
+    "actor": "Priya",
+    "counterparty": "Arjun",
+    "action": "confirm call at Wednesday 3 PM",
+    "direction": "waiting_on_other",
+    "stated_deadline": "Wednesday 3 PM",
+    "ownership_clear": true,
+    "timestamp": "2026-09-22T17:45:00"
+  },
+  {
+    "raw_text": "targeting Thursday morning for board prep as discussed.",
+    "source_ids": [
+      "email-expense-1"
+    ],
+    "actor": "Divya",
+    "counterparty": "Arjun",
+    "action": "prepare July expense variance report",
+    "direction": "waiting_on_other",
+    "stated_deadline": "Thursday morning",
+    "ownership_clear": true,
+    "timestamp": "2026-09-21T14:30:00"
+  },
+  {
+    "raw_text": "Wednesday evening is tight but doable, I'll prioritize it.",
+    "source_ids": [
+      "email-expense-3"
+    ],
+    "actor": "Divya",
+    "counterparty": "Arjun",
+    "action": "deliver expense variance report",
+    "direction": "waiting_on_other",
+    "stated_deadline": "Wednesday evening",
+    "ownership_clear": true,
+    "timestamp": "2026-09-22T09:40:00"
+  },
+  {
+    "raw_text": "signature by Friday, 25 September.",
+    "source_ids": [
+      "email-lease-1"
+    ],
+    "actor": "Facilities",
+    "counterparty": "All Staff",
+    "action": "sign Mumbai office lease renewal",
+    "direction": "waiting_on_other",
+    "stated_deadline": "Friday, 25 September",
+    "ownership_clear": true,
+    "timestamp": "2026-09-21T10:15:00"
+  },
+  {
+    "raw_text": "signature is still pending. Deadline is Friday, 25 September, end of day.",
+    "source_ids": [
+      "email-lease-4"
+    ],
+    "actor": "Facilities",
+    "counterparty": "All Staff",
+    "action": "sign Mumbai office lease renewal",
+    "direction": "waiting_on_other",
+    "stated_deadline": "Friday, 25 September end of day",
+    "ownership_clear": true,
+    "timestamp": "2026-09-24T16:00:00"
+  },
+  {
+    "raw_text": "expense variance report from Divya needs to be in my hands by Wednesday evening, not Thursday",
+    "source_ids": [
+      "voice-2"
+    ],
+    "actor": "Divya",
+    "counterparty": "Arjun",
+    "action": "deliver expense variance report to Arjun",
+    "direction": "waiting_on_other",
+    "stated_deadline": "Wednesday evening",
+    "ownership_clear": true,
+    "timestamp": "2026-09-23T08:15:00"
+  },
+  {
+    "raw_text": "I owe Priya a time, need to lock that in today.",
+    "source_ids": [
+      "voice-2"
+    ],
+    "actor": "Arjun",
+    "counterparty": "Priya",
+    "action": "confirm time for Meridian call with Priya",
+    "direction": "my_action",
+    "stated_deadline": "today",
+    "ownership_clear": true,
+    "timestamp": "2026-09-23T08:15:00"
+  }
+]

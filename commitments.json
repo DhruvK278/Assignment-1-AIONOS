@@ -1,0 +1,287 @@
+[
+  {
+    "id": "commit-1",
+    "action": "have campaign deck ready for 9:30 AM Thursday review",
+    "actor": "Neha",
+    "counterparty": "Arjun",
+    "direction": "waiting_on_other",
+    "current_deadline_text": "9:30 AM Thursday",
+    "ownership_clear": true,
+    "status_history": [
+      {
+        "stated": "2026-09-21T09:01:00",
+        "deadline": "Wednesday",
+        "source_ids": [
+          "transcript-2"
+        ]
+      },
+      {
+        "stated": "2026-09-21T11:00:00",
+        "deadline": "Wednesday",
+        "source_ids": [
+          "email-deck-1"
+        ]
+      },
+      {
+        "stated": "2026-09-22T16:15:00",
+        "deadline": "Thursday morning",
+        "source_ids": [
+          "email-deck-2"
+        ]
+      },
+      {
+        "stated": "2026-09-23T10:20:00",
+        "deadline": "9:30 AM Thursday",
+        "source_ids": [
+          "email-deck-4"
+        ]
+      }
+    ],
+    "source_ids": [
+      "email-deck-4",
+      "email-deck-1",
+      "email-deck-2",
+      "transcript-2"
+    ]
+  },
+  {
+    "id": "commit-2",
+    "action": "send updated vendor list",
+    "actor": "Arjun",
+    "counterparty": "Raghav",
+    "direction": "my_action",
+    "current_deadline_text": "Wednesday morning",
+    "ownership_clear": true,
+    "status_history": [
+      {
+        "stated": "2026-09-21T09:02:00",
+        "deadline": "end of day tomorrow",
+        "source_ids": [
+          "transcript-3"
+        ]
+      },
+      {
+        "stated": "2026-09-21T09:50:00",
+        "deadline": "today",
+        "source_ids": [
+          "email-vendor-1"
+        ]
+      },
+      {
+        "stated": "2026-09-21T17:40:00",
+        "deadline": "tomorrow morning",
+        "source_ids": [
+          "email-vendor-2"
+        ]
+      },
+      {
+        "stated": "2026-09-22T18:30:00",
+        "deadline": "Wednesday morning",
+        "source_ids": [
+          "email-vendor-4"
+        ]
+      }
+    ],
+    "source_ids": [
+      "transcript-3",
+      "email-vendor-2",
+      "email-vendor-1",
+      "email-vendor-4"
+    ]
+  },
+  {
+    "id": "commit-3",
+    "action": "sign off Mumbai office renewal paperwork",
+    "actor": "unowned",
+    "counterparty": "All",
+    "direction": "waiting_on_other",
+    "current_deadline_text": "",
+    "ownership_clear": false,
+    "status_history": [
+      {
+        "stated": "2026-09-21T09:03:00",
+        "deadline": "this week",
+        "source_ids": [
+          "transcript-4"
+        ]
+      },
+      {
+        "stated": "2026-09-21T09:04:00",
+        "deadline": "",
+        "source_ids": [
+          "transcript-5"
+        ]
+      }
+    ],
+    "source_ids": [
+      "transcript-4",
+      "transcript-5"
+    ]
+  },
+  {
+    "id": "commit-4",
+    "action": "deliver expense variance report to Arjun",
+    "actor": "Divya",
+    "counterparty": "Arjun",
+    "direction": "waiting_on_other",
+    "current_deadline_text": "Wednesday evening",
+    "ownership_clear": true,
+    "status_history": [
+      {
+        "stated": "2026-09-21T09:05:00",
+        "deadline": "before Thursday",
+        "source_ids": [
+          "transcript-6"
+        ]
+      },
+      {
+        "stated": "2026-09-21T09:06:00",
+        "deadline": "Wednesday evening",
+        "source_ids": [
+          "transcript-7"
+        ]
+      },
+      {
+        "stated": "2026-09-21T14:30:00",
+        "deadline": "Thursday morning",
+        "source_ids": [
+          "email-expense-1"
+        ]
+      },
+      {
+        "stated": "2026-09-22T09:40:00",
+        "deadline": "Wednesday evening",
+        "source_ids": [
+          "email-expense-3"
+        ]
+      },
+      {
+        "stated": "2026-09-23T08:15:00",
+        "deadline": "Wednesday evening",
+        "source_ids": [
+          "voice-2"
+        ]
+      }
+    ],
+    "source_ids": [
+      "email-expense-3",
+      "transcript-7",
+      "transcript-6",
+      "voice-2",
+      "email-expense-1"
+    ]
+  },
+  {
+    "id": "commit-5",
+    "action": "reconfirm new meeting time with Meridian Logistics client",
+    "actor": "Arjun",
+    "counterparty": "Meridian Logistics",
+    "direction": "my_action",
+    "current_deadline_text": "",
+    "ownership_clear": true,
+    "status_history": [
+      {
+        "stated": "2026-09-21T09:07:00",
+        "deadline": "",
+        "source_ids": [
+          "transcript-8"
+        ]
+      }
+    ],
+    "source_ids": [
+      "transcript-8"
+    ]
+  },
+  {
+    "id": "commit-6",
+    "action": "propose call time Wednesday 3:00 PM",
+    "actor": "Arjun",
+    "counterparty": "Priya",
+    "direction": "my_action",
+    "current_deadline_text": "Wednesday 3:00 PM",
+    "ownership_clear": true,
+    "status_history": [
+      {
+        "stated": "2026-09-22T15:00:00",
+        "deadline": "Wednesday 3:00 PM",
+        "source_ids": [
+          "email-call-2"
+        ]
+      }
+    ],
+    "source_ids": [
+      "email-call-2"
+    ]
+  },
+  {
+    "id": "commit-7",
+    "action": "confirm call at Wednesday 3 PM",
+    "actor": "Priya",
+    "counterparty": "Arjun",
+    "direction": "waiting_on_other",
+    "current_deadline_text": "Wednesday 3 PM",
+    "ownership_clear": true,
+    "status_history": [
+      {
+        "stated": "2026-09-22T17:45:00",
+        "deadline": "Wednesday 3 PM",
+        "source_ids": [
+          "email-call-3"
+        ]
+      }
+    ],
+    "source_ids": [
+      "email-call-3"
+    ]
+  },
+  {
+    "id": "commit-8",
+    "action": "sign Mumbai office lease renewal",
+    "actor": "Facilities",
+    "counterparty": "All Staff",
+    "direction": "waiting_on_other",
+    "current_deadline_text": "Friday, 25 September end of day",
+    "ownership_clear": true,
+    "status_history": [
+      {
+        "stated": "2026-09-21T10:15:00",
+        "deadline": "Friday, 25 September",
+        "source_ids": [
+          "email-lease-1"
+        ]
+      },
+      {
+        "stated": "2026-09-24T16:00:00",
+        "deadline": "Friday, 25 September end of day",
+        "source_ids": [
+          "email-lease-4"
+        ]
+      }
+    ],
+    "source_ids": [
+      "email-lease-4",
+      "email-lease-1"
+    ]
+  },
+  {
+    "id": "commit-9",
+    "action": "confirm time for Meridian call with Priya",
+    "actor": "Arjun",
+    "counterparty": "Priya",
+    "direction": "my_action",
+    "current_deadline_text": "today",
+    "ownership_clear": true,
+    "status_history": [
+      {
+        "stated": "2026-09-23T08:15:00",
+        "deadline": "today",
+        "source_ids": [
+          "voice-2"
+        ]
+      }
+    ],
+    "source_ids": [
+      "voice-2"
+    ]
+  }
+]
