@@ -53,7 +53,52 @@ def render_brief(commitments):
             st.warning(f"**⚠️ {c.get('action')}**")
             st.caption(f"Sources: {', '.join(c.get('source_ids', []))}")
 
+def inject_custom_css():
+    st.markdown("""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        html, body, [class*="css"] {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        div[data-testid="column"] {
+            background: linear-gradient(145deg, #1e1e24 0%, #17171d 100%);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        
+        [data-testid="stChatMessage"] {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+        }
+        
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        
+        h3 {
+            color: #6C63FF !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid rgba(108, 99, 255, 0.3);
+            padding-bottom: 8px;
+            margin-bottom: 16px !important;
+        }
+        
+        [data-testid="stExpander"] {
+            background-color: transparent !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+            border-radius: 8px !important;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
 def main():
+    inject_custom_css()
     st.sidebar.title("Agent Controls")
     
     # Time Travel control

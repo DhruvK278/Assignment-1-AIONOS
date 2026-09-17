@@ -14,8 +14,12 @@ def get_commitments(counterparty=None, direction=None):
     
     results = []
     for c in commitments:
-        if counterparty and c.get("counterparty", "").lower() != counterparty.lower():
-            continue
+        if counterparty:
+            c_lower = counterparty.lower()
+            actor = c.get("actor", "").lower()
+            cparty = c.get("counterparty", "").lower()
+            if c_lower not in actor and c_lower not in cparty:
+                continue
         if direction and c.get("direction") != direction:
             continue
         results.append(c)
@@ -45,8 +49,8 @@ def run_agent_turn(user_message, chat_history, as_of_date_str):
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "counterparty": {"type": "string", "description": "The person Arjun is interacting with (e.g., raghav, neha, divya)."},
-                        "direction": {"type": "string", "description": "Either 'my_action' (if Arjun owes it) or 'waiting_on_other' (if someone else owes it to Arjun)."}
+                        "counterparty": {"type": ["string", "null"], "description": "The person Arjun is interacting with (e.g., raghav, neha, divya)."},
+                        "direction": {"type": ["string", "null"], "description": "Either 'my_action' (if Arjun owes it) or 'waiting_on_other' (if someone else owes it to Arjun)."}
                     }
                 }
             }
@@ -75,31 +79,35 @@ def run_agent_turn(user_message, chat_history, as_of_date_str):
         
     messages.append({"role": "user", "content": user_message})
     
-    # We use a standard try-except in case the model doesn't support tools perfectly
-    try:
-        response = client.chat.completions.create(
-            model="openai/gpt-oss-120b",
-            messages=messages,
-            tools=tools,
-            tool_choice="auto",
-            max_tokens=2000
-        )
-    except Exception as e:
-        return f"Agent API Error: {str(e)}"
-    
-    response_message = response.choices[0].message
-    tool_calls = response_message.tool_calls
-    
-    if tool_calls:
-        # The assistant called a tool
+    for _ in range(6):  # Allow up to 6 tool iterations
+        try:
+            response = client.chat.completions.create(
+                model="openai/gpt-oss-120b",
+                messages=messages,
+                tools=tools,
+                tool_choice="auto",
+                max_tokens=2000
+            )
+        except Exception as e:
+            return f"Agent API Error: {str(e)}"
+        
+        response_message = response.choices[0].message
+        tool_calls = response_message.tool_calls
+        
+        if not tool_calls:
+            # If no tools were called, the model is providing the final answer
+            return response_message.content or "I'm not sure how to answer that."
+            
         messages.append(response_message)
         for tool_call in tool_calls:
+            print(f"🤖 [Agent] Calling Tool: {tool_call.function.name} with args {tool_call.function.arguments}")
             if tool_call.function.name == "get_commitments":
                 try:
                     args = json.loads(tool_call.function.arguments)
                 except:
                     args = {}
                 result = get_commitments(args.get("counterparty"), args.get("direction"))
+                print(f"📄 [Tool Result] Found {len(json.loads(result))} commitments")
                 messages.append({"role": "tool", "tool_call_id": tool_call.id, "name": tool_call.function.name, "content": result})
                 
             elif tool_call.function.name == "get_source_text":
@@ -108,18 +116,7 @@ def run_agent_turn(user_message, chat_history, as_of_date_str):
                 except:
                     args = {}
                 result = get_source_text(args.get("source_id"))
+                print(f"📄 [Tool Result] Fetched source: {args.get('source_id')}")
                 messages.append({"role": "tool", "tool_call_id": tool_call.id, "name": tool_call.function.name, "content": result})
                 
-        # Send tool results back to the model
-        try:
-            final_response = client.chat.completions.create(
-                model="openai/gpt-oss-120b",
-                messages=messages,
-                max_tokens=2000
-            )
-            return final_response.choices[0].message.content
-        except Exception as e:
-            return f"Agent API Error during tool resolution: {str(e)}"
-            
-    # If no tools were called
-    return response_message.content or "I'm not sure how to answer that."
+    return "I needed too many steps to answer this. Please try rephrasing."
