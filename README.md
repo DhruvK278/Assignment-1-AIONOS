@@ -9,18 +9,26 @@ This agent is built for **Arjun Malhotra (VP Sales)**. It ingests emails, meetin
 You can interact with the deployed prototype here:
 **[https://dhruvkassignment1.streamlit.app/](https://dhruvkassignment1.streamlit.app/)**
 
-## 🎯 Core Engineering Approach
+## 🛡️ Architecture Defence & Design Decisions
 
-This project is built around a specific design philosophy tailored for handling ambiguous and evolving information:
+This project is built around a specific design philosophy tailored for handling ambiguous and evolving information. Here is the defence of my technical choices:
 
-1. **Deterministic Logic Over LLM Hallucination:** The agent does *not* use an LLM to guess deadlines or ownership. If a deadline slips (e.g., the Vendor List shifting from Monday to Wednesday), a rule-based engine resolves the timeline using a `status_history` trail. If ownership is unconfirmed (e.g., the Mumbai Office Lease), the agent explicitly flags it as unowned rather than guessing.
-2. **No RAG / Vector DB Overhead:** Because the provided data pack is small and finite, adding a vector database would introduce unnecessary complexity. The extraction and resolution logic happens upfront, creating a highly structured `commitments.json` store that the agent queries directly.
-3. **Traceability:** Every single commitment or chat answer is grounded in actual data. The agent tracks `source_ids` back to the specific email, transcript line, or voice note that generated the task.
+### 1. Native Tool-Calling Loop vs. LangGraph/LangChain
+**The Decision:** I deliberately chose to build a native, framework-free tool-calling loop (using the Groq API SDK) rather than relying on heavy orchestration frameworks like LangChain or LangGraph.
+**The Defence:** For an agent with a highly scoped set of tools (three in this case), LangChain adds unnecessary bloatware, abstraction layers, and latency. Writing a native `while` loop is faster, much easier to debug, and proves a fundamental understanding of how LLM function calling actually works under the hood rather than hiding behind a framework.
 
-## 🏗️ Architecture
+### 2. Deterministic Rule-Based Resolution vs. Pure LLM
+**The Decision:** The agent does *not* use an LLM to guess deadlines or ownership.
+**The Defence:** When dealing with executive data, the biggest risk is hallucination. If a deadline slips (e.g., the Vendor List shifting from Monday to Wednesday), a pure Python rule-based engine resolves the timeline using a `status_history` trail. If ownership is unconfirmed (e.g., the Mumbai Office Lease where Divya only speculated it was Facilities), the agent strictly flags it as unowned. It will not hallucinate an owner. 
 
-- **Extraction Layer:** An LLM pass structures the raw data pack into candidate commitments.
-- **Resolution Engine:** A deduplication pipeline that merges duplicate actions (e.g., across a voice note and an email thread) and tracks evolving deadlines.
+### 3. No RAG / Vector DB Overhead
+**The Decision:** I avoided using Pinecone, Chroma, or any Vector DB for this project.
+**The Defence:** The provided data pack is small and finite. Adding a vector database would introduce unnecessary complexity and infrastructure risk. Instead, the extraction (via Instructor/Pydantic) and resolution logic happens upfront, creating a highly structured, queryable `commitments.json` store that the agent can read instantly.
+
+## 🏗️ System Flow
+
+- **Extraction Layer:** An LLM pass (Groq + Instructor) structures the raw data pack into Pydantic models.
+- **Resolution Engine:** A deduplication pipeline that merges duplicate actions and tracks evolving deadlines without generating redundant tasks.
 - **Classification Engine (Time Travel):** A pure Python module that evaluates the "as-of" date to dynamically tag commitments as `due_today`, `overdue`, `upcoming`, or `unowned`.
 - **Presentation (UI):** A single Streamlit application providing both a Daily Brief dashboard and a Chat interface.
 
