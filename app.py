@@ -2,6 +2,7 @@ import streamlit as st
 import json
 from datetime import datetime, date
 from engine import classify_commitments
+from agent import run_agent_turn
 
 st.set_page_config(page_title="Executive Productivity Agent", layout="wide")
 
@@ -64,6 +65,11 @@ def main():
         max_value=date(2026, 9, 25)
     )
     as_of_datetime = datetime.combine(as_of_date, datetime.min.time())
+    as_of_date_str = as_of_date.strftime("%A, %d %B %Y")
+    
+    # Initialize chat history
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
     
     try:
         raw_commitments = load_data()
@@ -72,7 +78,40 @@ def main():
         st.error(f"Error loading commitments. Has the engine run? {e}")
         return
 
-    render_brief(classified)
+    # Create two columns for Brief and Chat
+    main_col, chat_col = st.columns([2, 1])
+    
+    with main_col:
+        render_brief(classified)
+        
+    with chat_col:
+        st.header("Ask Agent")
+        
+        # Display chat messages
+        for message in st.session_state.messages:
+            with st.chat_message(message["role"]):
+                st.markdown(message["content"])
+
+        # Accept user input
+        if prompt := st.chat_input("e.g. What did I promise Raghav?"):
+            # Add user message to chat history
+            st.session_state.messages.append({"role": "user", "content": prompt})
+            
+            # Display user message in chat message container
+            with st.chat_message("user"):
+                st.markdown(prompt)
+
+            # Display assistant response
+            with st.chat_message("assistant"):
+                with st.spinner("Thinking..."):
+                    # Pass the *current* conversation history minus this latest message (which was just added)
+                    # wait, run_agent_turn expects history, we can pass the whole history up to the previous turn
+                    history = st.session_state.messages[:-1]
+                    response = run_agent_turn(prompt, history, as_of_date_str)
+                    st.markdown(response)
+            
+            # Add assistant response to chat history
+            st.session_state.messages.append({"role": "assistant", "content": response})
 
 if __name__ == "__main__":
     main()
