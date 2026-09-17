@@ -14,15 +14,15 @@ You can interact with the deployed prototype here:
 This project is built around a specific design philosophy tailored for handling ambiguous and evolving information. Here is the defence of my technical choices:
 
 ### 1. Native Tool-Calling Loop vs. LangGraph/LangChain
-**The Decision:** I deliberately chose to build a native, framework-free tool-calling loop (using the Groq API SDK) rather than relying on heavy orchestration frameworks like LangChain or LangGraph.
+**The Decision:** I deliberately chose to build a native, framework-free tool-calling loop (using the Groq API SDK) rather than relying on heavy orchestration frameworks like LangChain or LangGraph.\
 **The Defence:** For an agent with a highly scoped set of tools (three in this case), LangChain adds unnecessary bloatware, abstraction layers, and latency. Writing a native `while` loop is faster, much easier to debug, and proves a fundamental understanding of how LLM function calling actually works under the hood rather than hiding behind a framework.
 
 ### 2. Deterministic Rule-Based Resolution vs. Pure LLM
-**The Decision:** The agent does *not* use an LLM to guess deadlines or ownership.
+**The Decision:** The agent does *not* use an LLM to guess deadlines or ownership.\
 **The Defence:** When dealing with executive data, the biggest risk is hallucination. If a deadline slips (e.g., the Vendor List shifting from Monday to Wednesday), a pure Python rule-based engine resolves the timeline using a `status_history` trail. If ownership is unconfirmed (e.g., the Mumbai Office Lease where Divya only speculated it was Facilities), the agent strictly flags it as unowned. It will not hallucinate an owner. 
 
 ### 3. No RAG / Vector DB Overhead
-**The Decision:** I avoided using Pinecone, Chroma, or any Vector DB for this project.
+**The Decision:** I avoided using Pinecone, Chroma, or any Vector DB for this project.\
 **The Defence:** The provided data pack is small and finite. Adding a vector database would introduce unnecessary complexity and infrastructure risk. Instead, the extraction (via Instructor/Pydantic) and resolution logic happens upfront, creating a highly structured, queryable `commitments.json` store that the agent can read instantly.
 
 ## 🏗️ System Flow
